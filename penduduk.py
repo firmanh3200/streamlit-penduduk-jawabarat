@@ -13,18 +13,18 @@ st.subheader("", divider='rainbow')
 def kependudukan():
     with st.container(border=True):
         st.subheader("Kependudukan")
-        penduduktotal = pd.read_excel('data/inmak/proyeksi-penduduk-total.xlsx')
+        penduduktotal = pd.read_excel('data/proyeksi-penduduk-total.xlsx')
         penduduktotal_tranposed = penduduktotal.melt(id_vars=['Tahun'], value_vars=['00 - 04', '05 - 09', '10 - 14', '15 - 19', '20 - 24', '25 - 29', '30 - 34', '35 - 39', 
                                                                                     '40 - 44', '45 - 49', '50 - 54', '55 - 59', '60 - 64', '65 - 69', '70 - 74', '75+'],
                                                     var_name='Umur', value_name='Total').sort_values(by=['Tahun', 'Umur'])
         penduduktotal_tranposed['Umur'] = penduduktotal_tranposed['Umur'].astype(str)
-        penduduklaki = pd.read_excel('data/inmak/proyeksi-penduduk-laki.xlsx')
+        penduduklaki = pd.read_excel('data/proyeksi-penduduk-laki.xlsx')
         penduduklaki_tranposed = penduduklaki.melt(id_vars=['Tahun'], value_vars=['00 - 04', '05 - 09', '10 - 14', '15 - 19', '20 - 24', '25 - 29', '30 - 34', '35 - 39', 
                                                                                     '40 - 44', '45 - 49', '50 - 54', '55 - 59', '60 - 64', '65 - 69', '70 - 74', '75+'],
                                                     var_name='Umur', value_name='Total').sort_values(by=['Tahun', 'Umur'])
         penduduklaki_tranposed['Umur'] = penduduklaki_tranposed['Umur'].astype(str)
         penduduklaki_tranposed = penduduklaki_tranposed.rename(columns={'Total':'Laki-laki'})
-        pendudukperempuan = pd.read_excel('data/inmak/proyeksi-penduduk-perempuan.xlsx')
+        pendudukperempuan = pd.read_excel('data/proyeksi-penduduk-perempuan.xlsx')
         pendudukperempuan_tranposed = pendudukperempuan.melt(id_vars=['Tahun'], value_vars=['00 - 04', '05 - 09', '10 - 14', '15 - 19', '20 - 24', '25 - 29', '30 - 34', '35 - 39', 
                                                                                     '40 - 44', '45 - 49', '50 - 54', '55 - 59', '60 - 64', '65 - 69', '70 - 74', '75+'],
                                                     var_name='Umur', value_name='Total').sort_values(by=['Tahun', 'Umur'])
@@ -33,10 +33,10 @@ def kependudukan():
         
         gabunglakipr = pd.merge(penduduklaki_tranposed, pendudukperempuan_tranposed, on=['Tahun', 'Umur'], how='left')
         
-        penduduk_kabkot_umur = pd.read_excel('data/inmak/proyeksi-kabkot-umur.xlsx')
+        penduduk_kabkot_umur = pd.read_excel('data/proyeksi-kabkot-umur.xlsx')
         penduduk_kabkot_umur['Tahun'] = penduduk_kabkot_umur['Tahun'].astype(str)
         
-        penduduk_kabkot_jk = pd.read_excel('data/inmak/proyeksi-kabkot-jk.xlsx')
+        penduduk_kabkot_jk = pd.read_excel('data/proyeksi-kabkot-jk.xlsx')
         penduduk_kabkot_jk['Tahun'] = penduduk_kabkot_jk['Tahun'].astype(int)
 
 ### PENDUDUK TOTAL        
