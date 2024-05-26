@@ -12,7 +12,7 @@ st.subheader("", divider='rainbow')
 
 def kependudukan():
     with st.container(border=True):
-        st.subheader("Kependudukan")
+        #st.subheader("Kependudukan")
         penduduktotal = pd.read_excel('data/proyeksi-penduduk-total.xlsx')
         penduduktotal_tranposed = penduduktotal.melt(id_vars=['Tahun'], value_vars=['00 - 04', '05 - 09', '10 - 14', '15 - 19', '20 - 24', '25 - 29', '30 - 34', '35 - 39', 
                                                                                     '40 - 44', '45 - 49', '50 - 54', '55 - 59', '60 - 64', '65 - 69', '70 - 74', '75+'],
